@@ -1,23 +1,28 @@
 let x = 100;
 let y = 100;
+let speed = 3;
 
 function setup() {
-    createCanvas(400, 400);
-
+    createCanvas(600, 600);
 }
 
 function draw() {
-    background(220);
+    background(131, 168, 226);
     ellipse(x, y, 40, 40);
+    if (keyIsDown(RIGHT_ARROW)) {
+        x += speed;
+    }
+    if (keyIsDown(LEFT_ARROW)) {
+        x -= speed;
+    }
+    if (keyIsDown(DOWN_ARROW)) {
+        y += speed;
+    }
+    if (keyIsDown(UP_ARROW)) {
+        y -= speed;
+    }
 }
 
 function keyPressed() {
-    switch (keyCode) {
-        case 39:
-            x += 10;
-            break;
-        case 40:
-            y += 10;
-            break;
-    }
+
 }
