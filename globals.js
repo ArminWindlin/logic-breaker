@@ -1,3 +1,3 @@
 let lvl;
-let lvlNumber = 0;
+let lvlNumber = 2;
 let lvlCheck = -1;
