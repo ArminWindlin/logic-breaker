@@ -23,6 +23,8 @@ class Lvl2 {
                 this.player.shapeColor = p.color(0, 0, 255);
                 this.target = p.createSprite(500, 400, 20, 20);
                 this.target.shapeColor = p.color(255, 0, 0);
+                this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
+                this.cnv.style('box-shadow','0 0 30px 10px red');
 
                 /*this.barriers = new p.Group();
                 this.barrier1 = p.createSprite(450, 300, 300, 10);
@@ -34,7 +36,6 @@ class Lvl2 {
             };
 
             p.draw = () => {
-                this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
                 p.background(0, 0, 0);
 
                 this.player.position.x = this.x;
@@ -61,6 +62,7 @@ class Lvl2 {
                 }
 
                 p.drawSprites();
+
             }
 
         };
