@@ -22,6 +22,7 @@ class End {
             };
 
             p.draw = () => {
+                p.clear();
                 this.winner.position.y--;
                 p.drawSprites();
             }

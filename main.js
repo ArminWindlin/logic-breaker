@@ -59,6 +59,18 @@ function setLvl() {
         case 7:
             lvl = new Lvl7();
             break;
+        case 8:
+            lvl = new Lvl8();
+            break;
+        case 9:
+            lvl = new Lvl9();
+            break;
+        case 10:
+            lvl = new Lvl10();
+            break;
+        case 11:
+            lvl = new Lvl11();
+            break;
         case 100:
             lvl = new End();
             break;
