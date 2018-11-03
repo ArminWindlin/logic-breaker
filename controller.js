@@ -40,3 +40,8 @@ function toggleTensorConfig() {
     }
     tensorConfigVisible = !tensorConfigVisible;
 }
+
+function updateScore(s) {
+    score += s;
+    document.getElementById('score').innerHTML = 'Score: ' + score;
+}

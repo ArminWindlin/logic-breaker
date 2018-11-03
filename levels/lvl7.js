@@ -1,13 +1,15 @@
-class Lvl2 {
+class Lvl7 {
     constructor() {
         this.p;
         this.score = 1000;
-        this.x = 100;
-        this.y = 100;
-        this.speed = 3;
+        this.x = 50;
+        this.y = 300;
+        this.speed = 4;
         this.cnv;
         this.player;
         this.target;
+        this.activater;
+        this.block;
 
         this.sketch;
         this.setup();
@@ -20,12 +22,16 @@ class Lvl2 {
             p.setup = () => {
                 this.p = p;
                 this.cnv = p.createCanvas(600, 600);
-                this.player = p.createSprite(this.x, this.y, 40, 40);
-                this.player.shapeColor = p.color(0, 0, 255);
-                this.target = p.createSprite(500, 400, 20, 20);
-                this.target.shapeColor = p.color(255, 0, 0);
                 this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
                 this.cnv.style('box-shadow', '0 0 30px 10px red');
+                this.player = p.createSprite(this.x, this.y, 40, 40);
+                this.player.shapeColor = p.color(0, 0, 255);
+                this.target = p.createSprite(550, 550, 20, 20);
+                this.target.shapeColor = p.color(255, 0, 0);
+                this.activater = p.createSprite(550, 50, 20, 20);
+                this.activater.shapeColor = p.color(0, 255, 0);
+                this.block = p.createSprite(300, 300, 80, 80);
+                this.block.shapeColor = p.color(61, 57, 55);
             };
 
             p.draw = () => {
@@ -34,18 +40,18 @@ class Lvl2 {
                 this.player.position.x = this.x;
                 this.player.position.y = this.y;
 
+                this.player.displace(this.block);
 
-                if (this.player.overlap(this.target)) {
+                if (this.player.overlap(this.target) && this.block.overlap(this.activater)) {
                     p.noLoop();
                     updateScore(this.score);
-                    lvlNumber = 5;
+                    lvlNumber = 0;
                 }
 
                 if (tensorControl) {
                     // TENSOR CONTROLLER
                     if (localStorage.controller == 3) {
-                        if (this.x < 300 || this.x > 340 || this.y > 650)
-                            this.x += this.speed;
+                        this.x += this.speed;
                     }
                     if (localStorage.controller == 2) {
                         this.x -= this.speed;
@@ -59,8 +65,7 @@ class Lvl2 {
                 } else {
                     // KEY LISTENER
                     if (p.keyIsDown(p.RIGHT_ARROW)) {
-                        if (this.x < 300 || this.x > 340 || this.y > 650)
-                            this.x += this.speed;
+                        this.x += this.speed;
                     }
                     if (p.keyIsDown(p.LEFT_ARROW)) {
                         this.x -= this.speed;
@@ -74,8 +79,12 @@ class Lvl2 {
                 }
 
                 p.drawSprites();
+
             }
+
         };
+
+
     }
 
     countScore() {
@@ -84,4 +93,5 @@ class Lvl2 {
                 this.score -= 25;
         }, 1000);
     }
+
 }

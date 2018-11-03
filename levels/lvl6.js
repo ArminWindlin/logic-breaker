@@ -1,15 +1,15 @@
-class Lvl5 {
+class Lvl6 {
     constructor() {
         this.p;
-        this.x = 25;
-        this.y = 25;
-        this.x_c = 0;
-        this.y_c = 0;
-        this.speed = 3;
+        this.score = 1000;
+        this.x = 50;
+        this.y = 50;
+        this.speed = 6;
         this.cnv;
         this.player;
         this.target;
-        this.barrier;
+        this.enemies;
+        this.enemy;
 
         this.sketch;
         this.setup();
@@ -21,76 +21,77 @@ class Lvl5 {
 
             p.setup = () => {
                 this.p = p;
-                this.score = 1000;
-                this.cnv = p.createCanvas(300, 300);
+                this.cnv = p.createCanvas(600, 600);
                 this.player = p.createSprite(this.x, this.y, 40, 40);
                 this.player.shapeColor = p.color(0, 0, 255);
-                this.target = p.createSprite(280, 280, 20, 20);
+                this.target = p.createSprite(550, 550, 20, 20);
                 this.target.shapeColor = p.color(255, 0, 0);
-                this.barrier = p.createSprite(150, 150, 200, 200);
-                this.barrier.shapeColor = p.color(61, 57, 55);
+                this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
                 this.cnv.style('box-shadow', '0 0 30px 10px red');
-                this.y_c = (p.windowHeight - p.height) / 2;
-                this.keylock = false;
+
+                this.enemies = new p.Group();
+                for (let i = 0; i < 8; i++) {
+                    this.enemy = p.createSprite(p.random(p.width), p.random(p.height - (p.height / 2)) + p.height / 2, 10, 10);
+                    this.shapeColor = p.color(150, 0, p.random(255));
+                    this.friction = p.random(0.97, 0.99);
+                    this.maxSpeed = p.random(1, 4);
+                    this.rotateToDirection = true;
+                    this.enemies.add(this.enemy);
+                }
             };
 
             p.draw = () => {
                 p.background(0, 0, 0);
-                this.cnv.position(this.x_c, this.y_c);
-                this.x_c += 4;
 
+                this.player.position.x = this.x;
+                this.player.position.y = this.y;
+
+                for (let i = 0; i < this.enemies.length; i++) {
+                    this.enemies[i].attractionPoint(0.2, this.player.position.x, this.player.position.y);
+                }
+
+                if (this.player.overlap(this.enemies)) {
+                    this.player.remove();
+                }
 
                 if (this.player.overlap(this.target)) {
                     p.noLoop();
                     updateScore(this.score);
-                    lvlNumber = 6;
+                    lvlNumber = 7;
                 }
 
                 if (tensorControl) {
                     // TENSOR CONTROLLER
                     if (localStorage.controller == 3) {
-                        this.player.setVelocity(2, 0);
+                        this.x += this.speed;
                     }
                     if (localStorage.controller == 2) {
-                        this.player.setVelocity(-2, 0);
+                        this.x -= this.speed;
                     }
                     if (localStorage.controller == 1) {
-                        this.player.setVelocity(0, 2);
+                        this.y += this.speed;
                     }
                     if (localStorage.controller == 0) {
-                        this.player.setVelocity(0, -2);
+                        this.y -= this.speed;
                     }
                 } else {
                     // KEY LISTENER
                     if (p.keyIsDown(p.RIGHT_ARROW)) {
-                        this.player.setVelocity(2, 0);
+                            this.x += this.speed;
                     }
                     if (p.keyIsDown(p.LEFT_ARROW)) {
-                        this.player.setVelocity(-2, 0);
+                        this.x -= this.speed;
                     }
                     if (p.keyIsDown(p.DOWN_ARROW)) {
-                        this.player.setVelocity(0, 2);
+                        this.y += this.speed;
                     }
                     if (p.keyIsDown(p.UP_ARROW)) {
-                        this.player.setVelocity(0, -2);
+                        this.y -= this.speed;
                     }
-                }
-
-                this.x = this.player.position.x;
-                this.y = this.player.position.y;
-
-                if (this.player.overlap(this.barrier)) {
-                    if (this.x < 150 && this.y < 269 && this.y > 31)
-                        this.player.setVelocity(-2, 0);
-                    else if (this.x > 150 && this.y < 269 && this.y > 31)
-                        this.player.setVelocity(2, 0);
-                    else if (this.y < 150)
-                        this.player.setVelocity(0, -2);
-                    else if (this.y > 150)
-                        this.player.setVelocity(0, 2);
                 }
 
                 p.drawSprites();
+
             }
         };
     }
@@ -101,4 +102,5 @@ class Lvl5 {
                 this.score -= 25;
         }, 1000);
     }
+
 }
