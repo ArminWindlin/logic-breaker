@@ -45,7 +45,6 @@ class Lvl5 {
                     updateScore(this.score);
                     lvlNumber = 6;
                 }
-
                 if (tensorControl) {
                     // TENSOR CONTROLLER
                     if (localStorage.controller == 3) {

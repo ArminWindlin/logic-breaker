@@ -13,6 +13,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
     <script src="libraries/p5.dom.js"></script>
     <script src="libraries/p5.play.js"></script>
+    <script src="libraries/p5.speech.js"></script>
 
     <!-- global variables -->
     <script src="globals.js"></script>
@@ -21,6 +22,8 @@
     <script src="levels/start.js"></script>
     <script src="levels/lvl1.js"></script>
     <script src="levels/lvl2.js"></script>
+    <script src="levels/lvl3.js"></script>
+    <script src="levels/lvl4.js"></script>
     <script src="levels/lvl5.js"></script>
     <script src="levels/lvl6.js"></script>
     <script src="levels/lvl7.js"></script>
@@ -31,18 +34,19 @@
     <script src="levels/end.js"></script>
 
     <!-- more js -->
-    <script src="controller.js"></script>
     <script src="firebase.js"></script>
+    <script src="controller.js"></script>
 
     <!-- main js -->
     <script src="main.js"></script>
 </head>
 <body>
-
+<audio id="audioPlayer" src="assets/sound/nyanCat.mp3" autoplay ></audio>
 <button id="button_restart" onclick="resetLvl()">Restart Level</button>
 <button id="button_home" onclick="restartGame()">Restart Game</button>
 <div id="lvl"></div>
 
+<button id="button_mute" class="float-right-lower" onclick="toggleSound()">Toggle sound</button>
 <button id="button_tensorConfig" class="float-right" onclick="openTensorConfig()">Motion Config</button>
 <button id="button_hideConfig" class="float-right" onclick="toggleTensorConfig()">Toggle Config</button>
 <button id="button_switchControls" class="float-right" onclick="switchControls()">Switch Controls</button>
