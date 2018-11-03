@@ -10,6 +10,7 @@
 
     <!-- libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
     <script src="libraries/p5.dom.js"></script>
     <script src="libraries/p5.play.js"></script>
 
@@ -24,8 +25,9 @@
     <script src="levels/lvl6.js"></script>
     <script src="levels/lvl7.js"></script>
 
-    <!-- main js -->
+    <!-- more js -->
     <script src="controller.js"></script>
+    <script src="firebase.js"></script>
 
     <!-- main js -->
     <script src="main.js"></script>
@@ -41,7 +43,12 @@
 <button id="button_switchControls" class="float-right" onclick="switchControls()">Switch Controls</button>
 <div id="controlType" class="float-right">Controller: Keyboard</div>
 
-<div id="score" class="float-right">Score: 0</div>
+
+<input id="input_score" type="text" name="player" value="You Name">
+<button id="button_submit" onclick="sendToFirebase()"><a target="_blank" rel="noopener noreferrer" href="./scoreboard/scoreboard.html">Submit</a></button>
+<button id="button_submitScore" onclick="openSubmit()">Submit Score</button>
+<button id="button_scoreboard"><a target="_blank" rel="noopener noreferrer" href="./scoreboard/scoreboard.html">Scoreboard</a></button>
+<div id="score">Score: 0</div>
 
 <div id="gameContainer"></div>
 

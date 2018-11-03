@@ -42,6 +42,6 @@ function toggleTensorConfig() {
 }
 
 function updateScore(s) {
-    score += s;
-    document.getElementById('score').innerHTML = 'Score: ' + score;
+    antiCheatError += s;
+    document.getElementById('score').innerHTML = 'Score: ' + antiCheatError;
 }
