@@ -1,16 +1,16 @@
-class Lvl7 {
+class Lvl9 {
     constructor() {
         this.p;
         this.score = 1000;
-        this.x = 50;
-        this.y = 300;
+        this.x = 200;
+        this.y_c = 200;
+        this.x_c = 200;
+        this.y = 200;
+        this.y_t = 10;
         this.speed = 4;
         this.cnv;
         this.player;
         this.target;
-        this.activater;
-        this.block;
-
         this.sketch;
         this.setup();
         this.countScore();
@@ -22,69 +22,72 @@ class Lvl7 {
             p.setup = () => {
                 this.p = p;
                 this.cnv = p.createCanvas(600, 600);
-                this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
+                p.background(0, 0, 0);
+                this.cnv.position(this.x, this.y);
                 this.cnv.style('box-shadow', '0 0 30px 10px red');
-                this.player = p.createSprite(this.x, this.y, 40, 40);
+                this.player = p.createSprite(this.x_c, this.y_c, 40, 40);
                 this.player.shapeColor = p.color(0, 0, 255);
-                this.target = p.createSprite(550, 550, 20, 20);
+                this.target = p.createSprite(550, this.y_t, 20, 20);
                 this.target.shapeColor = p.color(255, 0, 0);
-                this.activater = p.createSprite(550, 50, 20, 20);
-                this.activater.shapeColor = p.color(0, 255, 0);
-                this.block = p.createSprite(300, 300, 80, 80);
-                this.block.shapeColor = p.color(61, 57, 55);
             };
 
             p.draw = () => {
                 p.background(0, 0, 0);
-
+                this.cnv.position(this.x_c, this.y_c);
+                this.target.position.y = this.y_t;
                 this.player.position.x = this.x;
                 this.player.position.y = this.y;
 
-                this.player.displace(this.block);
+                this.y_t += 2;
 
-                if (this.player.overlap(this.target) && this.block.overlap(this.activater)) {
+                if (this.player.overlap(this.target)) {
                     p.noLoop();
                     updateScore(this.score);
-                    lvlNumber = 8;
+                    lvlNumber = 10;
                 }
 
                 if (tensorControl) {
                     // TENSOR CONTROLLER
                     if (localStorage.controller == 3) {
-                        this.x += this.speed;
-                    }
-                    if (localStorage.controller == 2) {
+                        this.x_c += this.speed;
                         this.x -= this.speed;
                     }
+                    if (localStorage.controller == 2) {
+                        this.x_c -= this.speed;
+                        this.x += this.speed;
+                    }
                     if (localStorage.controller == 1) {
-                        this.y += this.speed;
+                        this.y_c += this.speed;
+                        this.y -= this.speed;
                     }
                     if (localStorage.controller == 0) {
-                        this.y -= this.speed;
+                        this.y_c -= this.speed;
+                        this.y += this.speed;
                     }
                 } else {
                     // KEY LISTENER
                     if (p.keyIsDown(p.RIGHT_ARROW)) {
-                        this.x += this.speed;
-                    }
-                    if (p.keyIsDown(p.LEFT_ARROW)) {
+                        this.x_c += this.speed;
                         this.x -= this.speed;
                     }
+                    if (p.keyIsDown(p.LEFT_ARROW)) {
+                        this.x_c -= this.speed;
+                        this.x += this.speed;
+                    }
                     if (p.keyIsDown(p.DOWN_ARROW)) {
-                        this.y += this.speed;
+                        this.y_c += this.speed;
+                        this.y -= this.speed;
                     }
                     if (p.keyIsDown(p.UP_ARROW)) {
-                        this.y -= this.speed;
+                        this.y_c -= this.speed;
+                        this.y += this.speed;
                     }
                 }
 
                 p.drawSprites();
 
             }
-
         };
-
-
     }
 
     countScore() {

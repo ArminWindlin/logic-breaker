@@ -1,19 +1,22 @@
-class Lvl7 {
+class Lvl8 {
     constructor() {
         this.p;
         this.score = 1000;
-        this.x = 50;
-        this.y = 300;
-        this.speed = 4;
+        this.x = 30;
+        this.y = 570;
+        this.speed = -3;
         this.cnv;
         this.player;
         this.target;
-        this.activater;
-        this.block;
+        this.block1;
+        this.block2;
+        this.block3;
+        this.blocks;
 
         this.sketch;
         this.setup();
         this.countScore();
+        this.mixUp();
     }
 
     setup() {
@@ -26,12 +29,18 @@ class Lvl7 {
                 this.cnv.style('box-shadow', '0 0 30px 10px red');
                 this.player = p.createSprite(this.x, this.y, 40, 40);
                 this.player.shapeColor = p.color(0, 0, 255);
-                this.target = p.createSprite(550, 550, 20, 20);
+                this.target = p.createSprite(550, 50, 20, 20);
                 this.target.shapeColor = p.color(255, 0, 0);
-                this.activater = p.createSprite(550, 50, 20, 20);
-                this.activater.shapeColor = p.color(0, 255, 0);
-                this.block = p.createSprite(300, 300, 80, 80);
-                this.block.shapeColor = p.color(61, 57, 55);
+                this.blocks = new p.Group();
+                this.block1 = p.createSprite(550, 550, 80, 80);
+                this.block1.shapeColor = p.color(61, 57, 55);
+                this.blocks.add(this.block1);
+                this.block2 = p.createSprite(50, 50, 80, 80);
+                this.block2.shapeColor = p.color(61, 57, 55);
+                this.blocks.add(this.block2);
+                this.block3 = p.createSprite(550, 50, 80, 80);
+                this.block3.shapeColor = p.color(61, 57, 55);
+                this.blocks.add(this.block3);
             };
 
             p.draw = () => {
@@ -40,12 +49,12 @@ class Lvl7 {
                 this.player.position.x = this.x;
                 this.player.position.y = this.y;
 
-                this.player.displace(this.block);
+                this.player.displace(this.blocks);
 
-                if (this.player.overlap(this.target) && this.block.overlap(this.activater)) {
+                if (this.player.overlap(this.target)) {
                     p.noLoop();
                     updateScore(this.score);
-                    lvlNumber = 8;
+                    lvlNumber = 9;
                 }
 
                 if (tensorControl) {
@@ -92,6 +101,13 @@ class Lvl7 {
             if (this.score > 200)
                 this.score -= 25;
         }, 1000);
+    }
+
+    mixUp() {
+        setInterval(() => {
+            this.speed *= -1;
+        }, 3000)
+
     }
 
 }

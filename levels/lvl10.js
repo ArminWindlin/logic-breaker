@@ -1,16 +1,17 @@
-class Lvl7 {
+class Lvl10 {
     constructor() {
         this.p;
         this.score = 1000;
-        this.x = 50;
-        this.y = 300;
+        this.x = 200;
+        this.y = 200;
+        this.x_t = 200;
+        this.y_t = 200;
         this.speed = 4;
+        this.countdown = 4;
         this.cnv;
         this.player;
         this.target;
-        this.activater;
-        this.block;
-
+        this.blocks;
         this.sketch;
         this.setup();
         this.countScore();
@@ -22,30 +23,38 @@ class Lvl7 {
             p.setup = () => {
                 this.p = p;
                 this.cnv = p.createCanvas(600, 600);
-                this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
+                p.background(0, 0, 0);
+                this.cnv.position(this.x, this.y);
                 this.cnv.style('box-shadow', '0 0 30px 10px red');
-                this.player = p.createSprite(this.x, this.y, 40, 40);
+                this.player = p.createSprite(this.x_c, this.y_c, 40, 40);
                 this.player.shapeColor = p.color(0, 0, 255);
-                this.target = p.createSprite(550, 550, 20, 20);
+                this.target = p.createSprite(p.random(p.width), p.random(p.height), 20, 20);
                 this.target.shapeColor = p.color(255, 0, 0);
-                this.activater = p.createSprite(550, 50, 20, 20);
-                this.activater.shapeColor = p.color(0, 255, 0);
-                this.block = p.createSprite(300, 300, 80, 80);
-                this.block.shapeColor = p.color(61, 57, 55);
+                this.blocks = new p.Group();
+                for (let i = 0; i < 40; i++) {
+                    this.block = p.createSprite(p.random(p.width), p.random(p.height), 80, 80);
+                    this.block.shapeColor = p.color(20, 20, p.random(30));
+                    this.blocks.add(this.block);
+                }
             };
 
             p.draw = () => {
                 p.background(0, 0, 0);
-
                 this.player.position.x = this.x;
                 this.player.position.y = this.y;
 
-                this.player.displace(this.block);
+                this.player.displace(this.blocks);
 
-                if (this.player.overlap(this.target) && this.block.overlap(this.activater)) {
-                    p.noLoop();
-                    updateScore(this.score);
-                    lvlNumber = 8;
+                if (this.player.overlap(this.target)) {
+                    if (this.countdown === 0) {
+                        p.noLoop();
+                        updateScore(this.score);
+                        lvlNumber = 11;
+                    } else {
+                        this.target.position.x = p.random(p.width);
+                        this.target.position.y = p.random(p.height);
+                        this.countdown--;
+                    }
                 }
 
                 if (tensorControl) {
@@ -81,10 +90,7 @@ class Lvl7 {
                 p.drawSprites();
 
             }
-
         };
-
-
     }
 
     countScore() {

@@ -1,5 +1,5 @@
 let lvl;
-let lvlNumber = 0;
+let lvlNumber = 11;
 let lvlCheck = -1;
 let antiCheatError = 0;
 
