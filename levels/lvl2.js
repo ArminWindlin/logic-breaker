@@ -10,7 +10,7 @@ class Lvl2 {
         this.barriers;
         this.barrier1;
         this.barrier2;
-
+        this.countScore();
         this.sketch;
         this.setup();
     }
@@ -28,13 +28,6 @@ class Lvl2 {
                 this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
                 this.cnv.style('box-shadow','0 0 30px 10px red');
 
-                /*this.barriers = new p.Group();
-                this.barrier1 = p.createSprite(450, 300, 300, 10);
-                this.barrier1.shapeColor = p.color(255);
-                this.barrier2 = p.createSprite(300, 450, 10, 300);
-                this.barrier2.shapeColor = p.color(255);
-                this.barriers.add(this.barrier1);
-                this.barriers.add(this.barrier2);*/
             };
 
             p.draw = () => {
@@ -45,7 +38,7 @@ class Lvl2 {
 
 
                 if (this.player.overlap(this.target)) {
-                    lvlNumber = 3;
+                    lvlNumber = 4; //skip level 3 directly
                 }
 
                 // KEY LISTENER
@@ -70,6 +63,13 @@ class Lvl2 {
         };
 
 
+    }
+
+    countScore() {
+        setInterval(() => {
+            if (this.score > 200)
+                this.score -= 25;
+        }, 1000);
     }
 
 }

@@ -14,6 +14,3 @@ let audioIsPlayed = true;
 let audioTracks = ['assets/sound/nyanCat.mp3','assets/sound/rickRoll.mp3','assets/sound/noCopyright.mp3']
 let currentTrack = 0;
 
-//Speechrecognition
-let speechControlOn = false;
-let myRec = new p5.SpeechRec();
