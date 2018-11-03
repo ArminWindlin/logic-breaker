@@ -19,7 +19,7 @@ function sendToFirebase() {
     };
 
     let scoreEntry = scoreDB.push(data, finished);
-    console.log('Firebase generated key: ' + scoreEntry.key);
+    console.log('Firebase generated entry: ' + scoreEntry);
 
     function finished(error) {
         if (error) {
