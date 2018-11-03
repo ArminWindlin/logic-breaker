@@ -52,7 +52,7 @@ class Lvl11 {
                 if (this.player.overlap(this.target) && this.blocks.length === 0) {
                     p.noLoop();
                     updateScore(this.score);
-                    lvlNumber = 100;
+                    lvlNumber = 12;
                 }
 
                 if (this.blocks.length === 0) {

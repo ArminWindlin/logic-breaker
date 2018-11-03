@@ -1,9 +1,11 @@
-class Lvl4 {
+class LvlFinger {
     constructor() {
+        this.p = p;
+        this.score = 1000;
         this.capture;
         this.x = 100;
         this.y = 100;
-        this.speed = 3;lvl
+        this.speed = 3;
         this.cnv;
         this.hud = "Tackle the fingerattack";
         this.player;
@@ -20,22 +22,22 @@ class Lvl4 {
         this.sketch = (p) => {
 
             p.setup = () => {
-                p.createCanvas(1000,1000);
+                p.createCanvas(1000, 1000);
                 this.capture = p.createCapture(p.INVERT);
-                this.capture.size(320,.240);
+                this.capture.size(320, .240);
                 this.fingerPoint = p.loadImage('assets/img/emoji_pointingFinger.png');
                 this.fingerHole = p.loadImage('assets/img/emoji_fingerhole.png');
 
                 this.cnv = p.createCanvas(600, 600);
                 this.player = p.createSprite(this.x, this.y, 40, 40);
-                this.player.addImage("pointingFinger",this.fingerPoint);
+                this.player.addImage("pointingFinger", this.fingerPoint);
                 this.target = p.createSprite(500, 400, 20, 20);
-                this.target.addImage("fingerHole",this.fingerHole);
+                this.target.addImage("fingerHole", this.fingerHole);
             };
 
             p.draw = () => {
                 p.background(255);
-                p.image(this.capture,0,0,800,600);
+                p.image(this.capture, 0, 0, 800, 600);
                 p.filter(p.INVERT);
                 this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
                 p.textSize(30);
@@ -46,10 +48,10 @@ class Lvl4 {
                 this.player.position.y = this.y;
 
                 if (this.player.overlap(this.target)) {
-                    this.hud = "WINNER";
                     this.capture.stop();
+                    updateScore(this.score);
                     p.noLoop();
-                    lvlNumber=5;
+                    lvlNumber = 100;
                 } else {
                     this.hud = "Tackle the fingerattack"
                 }
@@ -85,17 +87,14 @@ class Lvl4 {
                 }
 
                 p.drawSprites();
-
             }
-
         };
-
     }
+
     countScore() {
         setInterval(() => {
             if (this.score > 200)
                 this.score -= 25;
         }, 1000);
     }
-
 }
