@@ -45,3 +45,8 @@ function updateScore(s) {
     antiCheatError += s;
     document.getElementById('score').innerHTML = 'Score: ' + antiCheatError;
 }
+
+function resetScore() {
+    antiCheatError = 0;
+    document.getElementById('score').innerHTML = 'Score: ' + antiCheatError;
+}

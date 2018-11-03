@@ -18,12 +18,13 @@
     <script src="globals.js"></script>
 
     <!-- load levels -->
-    <script src="start.js"></script>
+    <script src="levels/start.js"></script>
     <script src="levels/lvl1.js"></script>
     <script src="levels/lvl2.js"></script>
     <script src="levels/lvl5.js"></script>
     <script src="levels/lvl6.js"></script>
     <script src="levels/lvl7.js"></script>
+    <script src="levels/end.js"></script>
 
     <!-- more js -->
     <script src="controller.js"></script>
@@ -35,7 +36,7 @@
 <body>
 
 <button id="button_restart" onclick="resetLvl()">Restart Level</button>
-<button id="button_home" onclick="lvlNumber = 0">Restart Game</button>
+<button id="button_home" onclick="restartGame()">Restart Game</button>
 <div id="lvl"></div>
 
 <button id="button_tensorConfig" class="float-right" onclick="openTensorConfig()">Motion Config</button>
