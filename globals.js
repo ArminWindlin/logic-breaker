@@ -1,6 +1,6 @@
 //Levels
 let lvl;
-let lvlNumber = 10;
+let lvlNumber = 0;
 let lvlCheck = -1;
 let antiCheatError = 0;
 
