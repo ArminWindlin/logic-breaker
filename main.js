@@ -30,6 +30,13 @@ function setGame() {
     new p5(lvl.sketch, window.document.getElementById('gameContainer'));
 }
 
+function restartGame() {
+    lvl ? lvl.p ? lvl.p.noLoop(): '' : '';
+    document.getElementById('gameContainer').innerHTML = '';
+    lvlNumber = 0;
+    resetScore();
+}
+
 function setLvl() {
     switch (lvlNumber) {
         case 0:
@@ -49,6 +56,9 @@ function setLvl() {
             break;
         case 7:
             lvl = new Lvl7();
+            break;
+        case 100:
+            lvl = new End();
             break;
         default:
             lvl = new Start();

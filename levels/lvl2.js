@@ -3,7 +3,7 @@ class Lvl2 {
         this.p;
         this.score = 1000;
         this.x = 100;
-        this.y = 100;
+        this.y = 400;
         this.speed = 3;
         this.cnv;
         this.player;

@@ -45,7 +45,7 @@ class Lvl7 {
                 if (this.player.overlap(this.target) && this.block.overlap(this.activater)) {
                     p.noLoop();
                     updateScore(this.score);
-                    lvlNumber = 0;
+                    lvlNumber = 100;
                 }
 
                 if (tensorControl) {
