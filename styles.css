@@ -19,8 +19,30 @@ button:hover {
 
 }
 
+.float-right{
+    float: right;
+}
+
 #lvl {
     display: inline-block;
     font-size: 25px;
     color: lightgrey;
+}
+
+#controlType{
+    display: inline-block;
+    font-size: 25px;
+    color: lightgrey;
+    margin-right:10px;
+}
+
+#tensorControl{
+    width:100vw;
+    height: 450px;
+    z-index: 1000;
+    margin: 20px 0;
+}
+
+#button_hideConfig{
+    display: none;
 }

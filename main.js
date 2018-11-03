@@ -6,16 +6,26 @@ function system() {
         lvl ? lvl.p.noLoop() : '';
         document.getElementById('gameContainer').innerHTML = '';
         setLvl();
-        new p5(lvl.sketch, window.document.getElementById('gameContainer'));
+        if (!tensorConfigVisible)
+            new p5(lvl.sketch, window.document.getElementById('gameContainer'));
         lvlCheck = lvlNumber;
         document.getElementById('lvl').innerHTML = 'Level: ' + lvlNumber;
     }
 }
 
 function resetLvl() {
-    lvl.p.noLoop();
+    lvl ? lvl.p.noLoop() : '';
     document.getElementById('gameContainer').innerHTML = '';
     setLvl();
+    new p5(lvl.sketch, window.document.getElementById('gameContainer'));
+}
+
+function removeGame() {
+    lvl ? lvl.p.noLoop() : '';
+    document.getElementById('gameContainer').innerHTML = '';
+}
+
+function setGame() {
     new p5(lvl.sketch, window.document.getElementById('gameContainer'));
 }
 

@@ -23,13 +23,25 @@
     <script src="levels/lvl5.js"></script>
 
     <!-- main js -->
+    <script src="controller.js"></script>
+
+    <!-- main js -->
     <script src="main.js"></script>
 </head>
 <body>
+
 <button id="button_restart" onclick="resetLvl()">Restart Level</button>
 <button id="button_home" onclick="lvlNumber = 0">Restart Game</button>
 <div id="lvl"></div>
+
+<button id="button_tensorConfig" class="float-right" onclick="openTensorConfig()">Motion Config</button>
+<button id="button_hideConfig" class="float-right" onclick="toggleTensorConfig()">Toggle Config</button>
+<button id="button_switchControls" class="float-right" onclick="switchControls()">Switch Controls</button>
+<div id="controlType" class="float-right">Controller: Keyboard</div>
+
 <div id="gameContainer"></div>
+
+<div id="tensorContainer"></div>
 
 </body>
 </html>

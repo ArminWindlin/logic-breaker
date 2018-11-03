@@ -39,18 +39,35 @@ class Lvl1 {
                     lvlNumber = 2;
                 }
 
-                // KEY LISTENER
-                if (p.keyIsDown(p.RIGHT_ARROW)) {
-                    this.x += this.speed;
-                }
-                if (p.keyIsDown(p.LEFT_ARROW)) {
-                    this.x -= this.speed;
-                }
-                if (p.keyIsDown(p.DOWN_ARROW)) {
-                    this.y += this.speed;
-                }
-                if (p.keyIsDown(p.UP_ARROW)) {
-                    this.y -= this.speed;
+
+                if (tensorControl) {
+                    // TENSOR CONTROLLER
+                    if (localStorage.controller == 3) {
+                        this.x += this.speed;
+                    }
+                    if (localStorage.controller == 2) {
+                        this.x -= this.speed;
+                    }
+                    if (localStorage.controller == 1) {
+                        this.y += this.speed;
+                    }
+                    if (localStorage.controller == 0) {
+                        this.y -= this.speed;
+                    }
+                } else {
+                    // KEY LISTENER
+                    if (p.keyIsDown(p.RIGHT_ARROW)) {
+                        this.x += this.speed;
+                    }
+                    if (p.keyIsDown(p.LEFT_ARROW)) {
+                        this.x -= this.speed;
+                    }
+                    if (p.keyIsDown(p.DOWN_ARROW)) {
+                        this.y += this.speed;
+                    }
+                    if (p.keyIsDown(p.UP_ARROW)) {
+                        this.y -= this.speed;
+                    }
                 }
 
                 p.drawSprites();
