@@ -3,13 +3,21 @@ setInterval(system, 100);
 
 function system() {
     if (lvlCheck !== lvlNumber) {
-        setLvl();
+        lvl ? lvl.p.noLoop() : '';
         document.getElementById('gameContainer').innerHTML = '';
+        setLvl();
         new p5(lvl.sketch, window.document.getElementById('gameContainer'));
         lvlCheck = lvlNumber;
+        document.getElementById('lvl').innerHTML = 'Level: ' + lvlNumber;
     }
 }
 
+function resetLvl() {
+    lvl.p.noLoop();
+    document.getElementById('gameContainer').innerHTML = '';
+    setLvl();
+    new p5(lvl.sketch, window.document.getElementById('gameContainer'));
+}
 
 function setLvl() {
     switch (lvlNumber) {

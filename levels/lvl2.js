@@ -1,5 +1,6 @@
 class Lvl2 {
     constructor() {
+        this.p;
         this.x = 100;
         this.y = 100;
         this.speed = 3;
@@ -18,6 +19,7 @@ class Lvl2 {
         this.sketch = (p) => {
 
             p.setup = () => {
+                this.p = p;
                 this.cnv = p.createCanvas(600, 600);
                 this.player = p.createSprite(this.x, this.y, 40, 40);
                 this.player.shapeColor = p.color(0, 0, 255);

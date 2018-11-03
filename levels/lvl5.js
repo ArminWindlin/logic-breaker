@@ -1,5 +1,6 @@
 class Lvl5 {
     constructor() {
+        this.p;
         this.x = 25;
         this.y = 25;
         this.x_c = 0;
@@ -18,6 +19,7 @@ class Lvl5 {
         this.sketch = (p) => {
 
             p.setup = () => {
+                this.p = p;
                 this.cnv = p.createCanvas(300, 300);
                 this.player = p.createSprite(this.x, this.y, 40, 40);
                 this.player.shapeColor = p.color(0, 0, 255);
@@ -53,8 +55,6 @@ class Lvl5 {
                 if (p.keyIsDown(p.UP_ARROW)) {
                     this.player.setVelocity(0, -2);
                 }
-                console.log('x: ' + this.x);
-                console.log('y: ' + this.y);
 
                 this.x = this.player.position.x;
                 this.y = this.player.position.y;
@@ -69,7 +69,6 @@ class Lvl5 {
                     else if (this.y > 150)
                         this.player.setVelocity(0, 2);
                 }
-
 
                 p.drawSprites();
 
