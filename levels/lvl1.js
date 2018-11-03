@@ -24,6 +24,10 @@ class Lvl1 {
                 this.player.shapeColor = p.color(0, 0, 255);
                 this.target = p.createSprite(500, 400, 20, 20);
                 this.target.shapeColor = p.color(255, 0, 0);
+                myRec.continuous = true;
+                myRec.interimResults = true;
+                myRec.onResult = parseResult;
+                myRec.start;
             };
 
             p.draw = () => {
@@ -45,6 +49,7 @@ class Lvl1 {
 
 
                 if (tensorControl) {
+
                     // TENSOR CONTROLLER
                     if (localStorage.controller == 3) {
                         this.x += this.speed;
@@ -58,31 +63,71 @@ class Lvl1 {
                     if (localStorage.controller == 0) {
                         this.y -= this.speed;
                     }
-                } else {
-                    // KEY LISTENER
-                    if (p.keyIsDown(p.RIGHT_ARROW)) {
+
+                }
+                else {
+                    /** original tensorflow code restore later
+                     // KEY LISTENER
+                     if (p.keyIsDown(p.RIGHT_ARROW)) {
                         this.x += this.speed;
                     }
-                    if (p.keyIsDown(p.LEFT_ARROW)) {
+                     if (p.keyIsDown(p.LEFT_ARROW)) {
                         this.x -= this.speed;
                     }
-                    if (p.keyIsDown(p.DOWN_ARROW)) {
+                     if (p.keyIsDown(p.DOWN_ARROW)) {
                         this.y += this.speed;
                     }
-                    if (p.keyIsDown(p.UP_ARROW)) {
+                     if (p.keyIsDown(p.UP_ARROW)) {
                         this.y -= this.speed;
                     }
+                     }
+                     */
+
+                    var mostrecentword = myRec.resultString.split(' ').pop();
+
+                    if (mostrecentword.indexOf("right") == -1) {
+                        this.x += this.speed;
+                    }
+                    if (mostrecentword.indexOf("left") == -1) {
+                        this.x -= this.speed;
+                    }
+                    if (mostrecentword.indexOf("down") == -1) {
+                        this.y += this.speed;
+                    }
+                    if (mostrecentword.indexOf("up") == -1) {
+                        this.y -= this.speed;
+                    }
+
+                    p.drawSprites();
+                }
+            };
+
+            let parseResult = function(){
+                var mostrecentword = myRec.resultString.split(' ').pop();
+
+                if (mostrecentword.indexOf("right") == -1) {
+                    this.x += this.speed;
+                }
+                if (mostrecentword.indexOf("left") == -1) {
+                    this.x -= this.speed;
+                }
+                if (mostrecentword.indexOf("down") == -1) {
+                    this.y += this.speed;
+                }
+                if (mostrecentword.indexOf("up") == -1) {
+                    this.y -= this.speed;
                 }
 
                 p.drawSprites();
             }
-        };
+        }
     }
 
-    countScore() {
-        setInterval(() => {
-            if (this.score > 200)
-                this.score -= 25;
-        }, 1000);
+        countScore()
+        {
+            setInterval(() => {
+                if (this.score > 200)
+                    this.score -= 25;
+            }, 1000);
+        }
     }
-}

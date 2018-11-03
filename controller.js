@@ -52,7 +52,6 @@ function toggleSound(){
        document.getElementById("audioPlayer").play();
        audioIsPlayed = true;
        console.log("audioIsPlayed = true now")
-
    }
 
 }
