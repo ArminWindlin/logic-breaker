@@ -3,7 +3,7 @@ setInterval(system, 100);
 
 function system() {
     if (lvlCheck !== lvlNumber) {
-        lvl ? lvl.p.noLoop() : '';
+        lvl ? lvl.p ? lvl.p.noLoop(): '' : '';
         document.getElementById('gameContainer').innerHTML = '';
         setLvl();
         if (!tensorConfigVisible)
@@ -14,14 +14,15 @@ function system() {
 }
 
 function resetLvl() {
-    lvl ? lvl.p.noLoop() : '';
+    lvl ? lvl.p ? lvl.p.noLoop(): '' : '';
     document.getElementById('gameContainer').innerHTML = '';
     setLvl();
-    new p5(lvl.sketch, window.document.getElementById('gameContainer'));
+    if (!tensorConfigVisible)
+        new p5(lvl.sketch, window.document.getElementById('gameContainer'));
 }
 
 function removeGame() {
-    lvl ? lvl.p.noLoop() : '';
+    lvl ? lvl.p ? lvl.p.noLoop(): '' : '';
     document.getElementById('gameContainer').innerHTML = '';
 }
 
@@ -42,6 +43,12 @@ function setLvl() {
             break;
         case 5:
             lvl = new Lvl5();
+            break;
+        case 6:
+            lvl = new Lvl6();
+            break;
+        case 7:
+            lvl = new Lvl7();
             break;
         default:
             lvl = new Start();

@@ -1,6 +1,7 @@
 class Lvl1 {
     constructor() {
         this.p;
+        this.score = 1000;
         this.x = 100;
         this.y = 100;
         this.speed = 3;
@@ -10,6 +11,7 @@ class Lvl1 {
         this.target;
         this.sketch;
         this.setup();
+        this.countScore();
     }
 
     setup() {
@@ -36,6 +38,8 @@ class Lvl1 {
                 this.player.position.y = this.y;
 
                 if (this.player.overlap(this.target)) {
+                    p.noLoop();
+                    updateScore(this.score);
                     lvlNumber = 2;
                 }
 
@@ -72,10 +76,13 @@ class Lvl1 {
 
                 p.drawSprites();
             }
-
         };
-
-
     }
 
+    countScore() {
+        setInterval(() => {
+            if (this.score > 200)
+                this.score -= 25;
+        }, 1000);
+    }
 }
