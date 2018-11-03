@@ -1,6 +1,6 @@
 class LvlFinger {
     constructor() {
-        this.p = p;
+        this.p;
         this.score = 1000;
         this.capture;
         this.x = 100;
@@ -22,6 +22,7 @@ class LvlFinger {
         this.sketch = (p) => {
 
             p.setup = () => {
+                this.p = p;
                 p.createCanvas(1000, 1000);
                 this.capture = p.createCapture(p.INVERT);
                 this.capture.size(320, .240);
