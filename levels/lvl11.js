@@ -15,7 +15,6 @@ class Lvl11 {
         this.sketch;
         this.setup();
         this.countScore();
-        document.getElementById('button_switchControls').blur();
     }
 
     setup() {
@@ -100,6 +99,7 @@ class Lvl11 {
                         this.player.setVelocity(this.velocityX, this.velocityY);
                     }
                     if (p.keyIsDown(32)) {
+                        document.getElementById('button_switchControls').blur();
                         this.bullets.add(p.createSprite(this.player.position.x, this.player.position.y, 5, 5));
                         this.bullets.get(this.bullets.length - 1).shapeColor = p.color(127, 161, 163);
                         this.bullets.get(this.bullets.length - 1).setVelocity(this.velocityX * 3, this.velocityY * 3);
