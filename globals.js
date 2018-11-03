@@ -8,7 +8,11 @@ let score = 0;
 let tensorConfig = false;
 let tensorControl = false;
 let tensorConfigVisible = false;
+
+//Audioplayer
 let audioIsPlayed = true;
+let audioTracks = ['assets/sound/nyanCat.mp3','assets/sound/rickRoll.mp3','assets/sound/noCopyright.mp3']
+let currentTrack = 0;
 
 //Speechrecognition
 let speechControlOn = false;

@@ -23,6 +23,7 @@ class Lvl3 {
 
             p.draw = () => {
                 p.clear();
+                p.background(0)
                 //animate the sprite sheet
                 p.animation(this.catAnimation,200,150);
             }

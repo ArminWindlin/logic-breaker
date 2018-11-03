@@ -3,9 +3,9 @@ class Lvl4 {
         this.capture;
         this.x = 100;
         this.y = 100;
-        this.speed = 3;
+        this.speed = 3;lvl
         this.cnv;
-        this.hud = "reach the red target";
+        this.hud = "Tackle the fingerattack";
         this.player;
         this.target;
         this.sketch;
@@ -47,8 +47,11 @@ class Lvl4 {
 
                 if (this.player.overlap(this.target)) {
                     this.hud = "WINNER";
+                    setInterval(()=>{lvlNumber=5},1000)
                 } else {
-                    this.hud = "reach the red target";
+                    this.hud = "reach th" +
+                        "" +
+                        "";
                 }
 
                 // KEY LISTENER
