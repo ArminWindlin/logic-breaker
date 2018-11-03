@@ -57,30 +57,30 @@ class Lvl4 {
                 if (tensorControl) {
                     // TENSOR CONTROLLER
                     if (localStorage.controller == 3) {
-                        this.player.setVelocity(2, 0);
+                        this.x += this.speed;
                     }
                     if (localStorage.controller == 2) {
-                        this.player.setVelocity(-2, 0);
+                        this.x -= this.speed;
                     }
                     if (localStorage.controller == 1) {
-                        this.player.setVelocity(0, 2);
+                        this.y += this.speed;
                     }
                     if (localStorage.controller == 0) {
-                        this.player.setVelocity(0, -2);
+                        this.y -= this.speed;
                     }
                 } else {
                     // KEY LISTENER
                     if (p.keyIsDown(p.RIGHT_ARROW)) {
-                        this.player.setVelocity(2, 0);
+                        this.x += this.speed;
                     }
                     if (p.keyIsDown(p.LEFT_ARROW)) {
-                        this.player.setVelocity(-2, 0);
+                        this.x -= this.speed;
                     }
                     if (p.keyIsDown(p.DOWN_ARROW)) {
-                        this.player.setVelocity(0, 2);
+                        this.y += this.speed;
                     }
                     if (p.keyIsDown(p.UP_ARROW)) {
-                        this.player.setVelocity(0, -2);
+                        this.y -= this.speed;
                     }
                 }
 
