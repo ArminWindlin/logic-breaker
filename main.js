@@ -22,6 +22,9 @@ function setLvl() {
         case 2:
             lvl = new Lvl2();
             break;
+        case 5:
+            lvl = new Lvl5();
+            break;
         default:
             lvl = new Start();
     }

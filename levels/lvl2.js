@@ -43,7 +43,7 @@ class Lvl2 {
 
 
                 if (this.player.overlap(this.target)) {
-                    lvlNumber = 0;
+                    lvlNumber = 5;
                 }
 
                 // KEY LISTENER
