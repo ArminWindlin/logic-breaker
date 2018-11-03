@@ -56,3 +56,8 @@ function toggleSound(){
    }
 
 }
+
+function updateScore(s) {
+    score += s;
+    document.getElementById('score').innerHTML = 'Score: ' + score;
+}

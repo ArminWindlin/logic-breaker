@@ -1,18 +1,17 @@
 class Lvl2 {
     constructor() {
         this.p;
+        this.score = 1000;
         this.x = 100;
         this.y = 100;
         this.speed = 3;
         this.cnv;
         this.player;
         this.target;
-        this.barriers;
-        this.barrier1;
-        this.barrier2;
 
         this.sketch;
         this.setup();
+        this.countScore();
     }
 
     setup() {
@@ -26,15 +25,7 @@ class Lvl2 {
                 this.target = p.createSprite(500, 400, 20, 20);
                 this.target.shapeColor = p.color(255, 0, 0);
                 this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
-                this.cnv.style('box-shadow','0 0 30px 10px red');
-
-                /*this.barriers = new p.Group();
-                this.barrier1 = p.createSprite(450, 300, 300, 10);
-                this.barrier1.shapeColor = p.color(255);
-                this.barrier2 = p.createSprite(300, 450, 10, 300);
-                this.barrier2.shapeColor = p.color(255);
-                this.barriers.add(this.barrier1);
-                this.barriers.add(this.barrier2);*/
+                this.cnv.style('box-shadow', '0 0 30px 10px red');
             };
 
             p.draw = () => {
@@ -45,31 +36,52 @@ class Lvl2 {
 
 
                 if (this.player.overlap(this.target)) {
+                    p.noLoop();
+                    updateScore(this.score);
                     lvlNumber = 5;
                 }
 
-                // KEY LISTENER
-                if (p.keyIsDown(p.RIGHT_ARROW)) {
-                    if (this.x < 300 || this.x > 340 || this.y > 650)
-                        this.x += this.speed;
-                }
-                if (p.keyIsDown(p.LEFT_ARROW)) {
-                    this.x -= this.speed;
-                }
-                if (p.keyIsDown(p.DOWN_ARROW)) {
-                    this.y += this.speed;
-                }
-                if (p.keyIsDown(p.UP_ARROW)) {
-                    this.y -= this.speed;
+                if (tensorControl) {
+                    // TENSOR CONTROLLER
+                    if (localStorage.controller == 3) {
+                        if (this.x < 300 || this.x > 340 || this.y > 650)
+                            this.x += this.speed;
+                    }
+                    if (localStorage.controller == 2) {
+                        this.x -= this.speed;
+                    }
+                    if (localStorage.controller == 1) {
+                        this.y += this.speed;
+                    }
+                    if (localStorage.controller == 0) {
+                        this.y -= this.speed;
+                    }
+                } else {
+                    // KEY LISTENER
+                    if (p.keyIsDown(p.RIGHT_ARROW)) {
+                        if (this.x < 300 || this.x > 340 || this.y > 650)
+                            this.x += this.speed;
+                    }
+                    if (p.keyIsDown(p.LEFT_ARROW)) {
+                        this.x -= this.speed;
+                    }
+                    if (p.keyIsDown(p.DOWN_ARROW)) {
+                        this.y += this.speed;
+                    }
+                    if (p.keyIsDown(p.UP_ARROW)) {
+                        this.y -= this.speed;
+                    }
                 }
 
                 p.drawSprites();
-
             }
-
         };
-
-
     }
 
+    countScore() {
+        setInterval(() => {
+            if (this.score > 200)
+                this.score -= 25;
+        }, 1000);
+    }
 }
