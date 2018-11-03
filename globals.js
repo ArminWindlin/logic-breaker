@@ -2,7 +2,7 @@
 let lvl;
 let lvlNumber = 0;
 let lvlCheck = -1;
-let score = 0;
+let antiCheatError = 0;
 
 //Tensorflow
 let tensorConfig = false;

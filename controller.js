@@ -41,7 +41,6 @@ function toggleTensorConfig() {
     tensorConfigVisible = !tensorConfigVisible;
 }
 
-
 function toggleSound() {
     if (audioIsPlayed) {
         document.getElementById("audioPlayer").pause();
@@ -64,9 +63,13 @@ function toggleSound() {
     }
 }
 
-    function updateScore(s) {
-        score += s;
-        document.getElementById('score').innerHTML = 'Score: ' + score;
-    }
 
+function updateScore(s) {
+    antiCheatError += s;
+    document.getElementById('score').innerHTML = 'Score: ' + antiCheatError;
+}
 
+function resetScore() {
+    antiCheatError = 0;
+    document.getElementById('score').innerHTML = 'Score: ' + antiCheatError;
+}

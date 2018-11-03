@@ -2,7 +2,7 @@ class Lvl2 {
     constructor() {
         this.p;
         this.x = 100;
-        this.y = 100;
+        this.y = 400;
         this.speed = 3;
         this.cnv;
         this.player;
