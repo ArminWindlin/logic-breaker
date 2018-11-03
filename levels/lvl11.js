@@ -15,6 +15,7 @@ class Lvl11 {
         this.sketch;
         this.setup();
         this.countScore();
+        document.getElementById('button_switchControls').blur();
     }
 
     setup() {
@@ -44,15 +45,10 @@ class Lvl11 {
 
                 this.bullets.overlap(this.blocks, removal);
 
-                function removal(spriteA, spriteB) {
-                    spriteA.remove();
-                    spriteB.remove();
-                }
-
                 if (this.player.overlap(this.target) && this.blocks.length === 0) {
                     p.noLoop();
                     updateScore(this.score);
-                    lvlNumber = 100;
+                    lvlNumber = 12;
                 }
 
                 if (this.blocks.length === 0) {
@@ -127,4 +123,9 @@ class Lvl11 {
         }, 1000);
     }
 
+}
+
+function removal(spriteA, spriteB) {
+    spriteA.remove();
+    spriteB.remove()
 }

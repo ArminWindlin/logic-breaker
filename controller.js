@@ -41,6 +41,29 @@ function toggleTensorConfig() {
     tensorConfigVisible = !tensorConfigVisible;
 }
 
+function toggleSound() {
+    if (audioIsPlayed) {
+        document.getElementById("audioPlayer").pause();
+        audioIsPlayed = false;
+    } else {
+        //set audiotrack
+        if (currentTrack + 1 < audioTracks.length) {
+            document.getElementById("audioPlayer").src = audioTracks[currentTrack + 1];
+            currentTrack++;
+            console.log("audio Tracks array size is: " + audioTracks.length);
+            console.log("next track is: " + currentTrack);
+        } else {
+            currentTrack = 0;
+            document.getElementById("audioPlayer").src = audioTracks[currentTrack];
+        }
+        console.log("setup is done")
+        document.getElementById("audioPlayer").play();
+        audioIsPlayed = true;
+        console.log("audioIsPlayed = true now")
+    }
+}
+
+
 function updateScore(s) {
     antiCheatError += s;
     document.getElementById('score').innerHTML = 'Score: ' + antiCheatError;

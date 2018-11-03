@@ -46,19 +46,19 @@ button:hover {
 
 #button_submitScore {
     position: fixed;
-    bottom: 5px;
+    bottom: 8px;
     left: 10px;
 }
 
 #button_scoreboard {
     position: fixed;
-    bottom: 5px;
+    bottom: 8px;
     left: 190px;
 }
 
 #input_score {
     position: fixed;
-    bottom: 55px;
+    bottom: 58px;
     font-size: 25px;
     left: 10px;
     border-radius: 5px;
@@ -68,7 +68,7 @@ button:hover {
 
 #button_submit {
     position: fixed;
-    bottom: 55px;
+    bottom: 58px;
     left: 190px;
     display: none;
 }
@@ -92,4 +92,11 @@ button:hover {
 
 #button_hideConfig {
     display: none;
+}
+
+.float-right-lower{
+    position:fixed;
+    bottom:8px;
+    right:5px;
+
 }

@@ -71,6 +71,9 @@ function setLvl() {
         case 11:
             lvl = new Lvl11();
             break;
+        case 12:
+            lvl = new LvlFinger();
+            break;
         case 100:
             lvl = new End();
             break;
