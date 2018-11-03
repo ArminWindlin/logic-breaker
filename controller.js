@@ -40,3 +40,19 @@ function toggleTensorConfig() {
     }
     tensorConfigVisible = !tensorConfigVisible;
 }
+
+
+function toggleSound(){
+
+   if(audioIsPlayed){
+       document.getElementById("audioPlayer").pause();
+       audioIsPlayed=false;
+       console.log("audioIsPlayed = false now")
+   }else{
+       document.getElementById("audioPlayer").play();
+       audioIsPlayed = true;
+       console.log("audioIsPlayed = true now")
+
+   }
+
+}

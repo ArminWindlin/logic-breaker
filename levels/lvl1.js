@@ -21,7 +21,7 @@ class Lvl1 {
                 this.player = p.createSprite(this.x, this.y, 40, 40);
                 this.player.shapeColor = p.color(0, 0, 255);
                 this.target = p.createSprite(500, 400, 20, 20);
-                this.target.shapeColor = p.color(255, 0, 0)
+                this.target.shapeColor = p.color(255, 0, 0);
             };
 
             p.draw = () => {

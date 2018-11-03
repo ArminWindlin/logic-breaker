@@ -24,16 +24,23 @@
 
     <!-- main js -->
     <script src="controller.js"></script>
+    <script src="levels/lvl3.js"></script>
+    <script src="levels/lvl4.js"></script>
+    <script src="levels/lvl6.js"></script>(
+
+
+
 
     <!-- main js -->
     <script src="main.js"></script>
 </head>
 <body>
-
+<audio id="audioPlayer" src="assets/sound/nyanCat.mp3" autoplay></audio>
 <button id="button_restart" onclick="resetLvl()">Restart Level</button>
 <button id="button_home" onclick="lvlNumber = 0">Restart Game</button>
 <div id="lvl"></div>
-
+"
+<button id="button_mute" class="float-right-lower" onclick="toggleSound()">Toggle sound</button>
 <button id="button_tensorConfig" class="float-right" onclick="openTensorConfig()">Motion Config</button>
 <button id="button_hideConfig" class="float-right" onclick="toggleTensorConfig()">Toggle Config</button>
 <button id="button_switchControls" class="float-right" onclick="switchControls()">Switch Controls</button>
