@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    font-family: Verdana,sans-serif;
+    font-family: Verdana, sans-serif;
 }
 
 button {
@@ -19,7 +19,7 @@ button:hover {
 
 }
 
-.float-right{
+.float-right {
     float: right;
 }
 
@@ -29,27 +29,67 @@ button:hover {
     color: lightgrey;
 }
 
-#controlType{
+#controlType {
     display: inline-block;
     font-size: 25px;
     color: lightgrey;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
-#score{
+#score {
+    position: fixed;
+    font-size: 25px;
+    bottom: 8px;
+    color: lightgrey;
+    left: 350px;
+}
+
+#button_submitScore {
     position: fixed;
     bottom: 5px;
-    font-size: 25px;
-    color: lightgrey;
+    left: 10px;
 }
 
-#tensorControl{
-    width:100vw;
+#button_scoreboard {
+    position: fixed;
+    bottom: 5px;
+    left: 190px;
+}
+
+#input_score {
+    position: fixed;
+    bottom: 55px;
+    font-size: 25px;
+    left: 10px;
+    border-radius: 5px;
+    width: 165px;
+    display: none;
+}
+
+#button_submit {
+    position: fixed;
+    bottom: 55px;
+    left: 190px;
+    display: none;
+}
+
+#button_submit > a {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+#button_scoreboard > a {
+    color: lightgrey;
+    text-decoration: none;
+}
+
+#tensorControl {
+    width: 100vw;
     height: 450px;
     z-index: 1000;
     margin: 20px 0;
 }
 
-#button_hideConfig{
+#button_hideConfig {
     display: none;
 }
