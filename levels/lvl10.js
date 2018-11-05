@@ -24,7 +24,7 @@ class Lvl10 {
                 this.p = p;
                 this.cnv = p.createCanvas(600, 600);
                 p.background(0, 0, 0);
-                this.cnv.position(this.x, this.y);
+                this.cnv.position((p.windowWidth - p.width) / 2, (p.windowHeight - p.height) / 2);
                 this.cnv.style('box-shadow', '0 0 30px 10px red');
                 this.player = p.createSprite(this.x_c, this.y_c, 40, 40);
                 this.player.shapeColor = p.color(0, 0, 255);

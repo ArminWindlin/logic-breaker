@@ -28,15 +28,18 @@ function gotData(results) {
             score: record.score
         })
     }
-    scores.sort((a,b) => b.score - a.score);
-    for(let i = 0; i < scores.length;i++){
+    scores.sort((a, b) => b.score - a.score);
+    for (let i = 0; i < scores.length; i++) {
         let element = document.createElement('div');
         let p = document.createElement('div');
         let s = document.createElement('div');
-        element.setAttribute('class','score');
-        p.setAttribute('class','right');
-        s.setAttribute('class','left');
-        p.innerHTML = scores[i].player + ': ';
+        element.setAttribute('class', 'score');
+        p.setAttribute('class', 'right');
+        s.setAttribute('class', 'left');
+        let player = scores[i].player;
+        let regex_html = /(<([^>]+)>)/ig;
+        player = player.replace(regex_html,'');
+        p.innerHTML = player + ': ';
         s.innerHTML = scores[i].score;
         element.appendChild(p);
         element.appendChild(s);
